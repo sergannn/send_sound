@@ -8,7 +8,7 @@ api_id =   21433623 #25151470
 api_hash =  '4862f5339c133e3d738d830c7f4250fc' #'a8589726dfdebd7c1eed521c29de88e6'
 target_username='me'
 
-@app.get("/")
+@app.post("/")
 async def send_telegram_message(api_id: str, api_hash: str, target_username: str):
     try:
         # Создаем экземпляр TelegramClient с переданными параметрами
