@@ -1,0 +1,6 @@
+###### Requirements without Version Specifiers ######
+nose
+requests
+fastapi
+uvicorn[standard]==0.17.*
+###### Requirements with Version Specifiers ######
