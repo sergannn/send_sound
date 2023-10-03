@@ -1,4 +1,6 @@
 ###### Requirements without Version Specifiers ######
+telethon
+http.client
 nose
 requests
 fastapi
