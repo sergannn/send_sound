@@ -11,7 +11,8 @@ async def start_auth(api_id: int, api_hash: str, phone: str):
         await client.connect()
         if not await client.is_user_authorized():
             await client.send_code_request(phone)
-            return {"message": "Введите код от TG"}
+            phone_code_hash = await client.send_code_request(phone).phone_code_hash
+            return {"message": "Введите код от TG", "hash":phone_code_hash}
         return {"message": "Авторизован"}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
