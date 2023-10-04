@@ -11,7 +11,7 @@ async def start_auth(api_id: int, api_hash: str, phone: str):
         await client.connect()
         if not await client.is_user_authorized():
             await client.send_code_request(phone)
-            phone_code_hash = client.send_code_request(phone).phone_code_hash
+            phone_code_hash = client.send_code_request(phone)
             return {"message": "Введите код от TG", "hash":phone_code_hash}
         return {"message": "Авторизован"}
     except Exception as e:
