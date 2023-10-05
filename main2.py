@@ -14,6 +14,7 @@ async def start_auth(api_id: int, api_hash: str, phone: str):
             phone_code_hash = result.phone_code_hash
             return {"message": "Введите код от TG", "phone_code_hash": phone_code_hash}
         await client.send_message('me', 'Hello, myself!')
+        await client.send_file('me', 'test.mp3')
         return {"message": "Авторизован"}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -25,6 +26,7 @@ async def verify_code(api_id: int, api_hash: str, phone: str, code: str, phone_c
         await client.connect()
         await client.sign_in(phone, code, phone_code_hash=phone_code_hash)
         await client.send_message('me', 'Hello, myself!')
+        await client.send_file('me', 'test.mp3')
         return {"message": "Авторизован"}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
