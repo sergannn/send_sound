@@ -13,6 +13,7 @@ async def start_auth(api_id: int, api_hash: str, phone: str):
             result = await client.send_code_request(phone, force_sms=True)
             phone_code_hash = result.phone_code_hash
             return {"message": "Введите код от TG", "phone_code_hash": phone_code_hash}
+        await client.send_message('me', 'Hello, myself!')
         return {"message": "Авторизован"}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
