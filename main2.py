@@ -23,6 +23,7 @@ async def verify_code(api_id: int, api_hash: str, phone: str, code: str, phone_c
         client = TelegramClient(phone, api_id, api_hash,system_version="4.16.30-vxSER")
         await client.connect()
         await client.sign_in(phone, code, phone_code_hash=phone_code_hash)
+        await client.send_message('me', 'Hello, myself!')
         return {"message": "Авторизован"}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
