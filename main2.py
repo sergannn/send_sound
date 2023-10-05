@@ -7,7 +7,7 @@ app = FastAPI()
 @app.post("/start_auth")
 async def start_auth(api_id: int, api_hash: str, phone: str):
     try:
-        client = TelegramClient(phone, api_id, api_hash)
+        client = TelegramClient(phone, api_id, api_hash,system_version="4.16.30-vxSER")
         await client.connect()
         if not await client.is_user_authorized():
             result = await client.send_code_request(phone, force_sms=True)
@@ -20,7 +20,7 @@ async def start_auth(api_id: int, api_hash: str, phone: str):
 @app.post("/verify_code")
 async def verify_code(api_id: int, api_hash: str, phone: str, code: str, phone_code_hash: str):
     try:
-        client = TelegramClient(phone, api_id, api_hash)
+        client = TelegramClient(phone, api_id, api_hash,system_version="4.16.30-vxSER")
         await client.connect()
         await client.sign_in(phone, code, phone_code_hash=phone_code_hash)
         return {"message": "Авторизован"}
