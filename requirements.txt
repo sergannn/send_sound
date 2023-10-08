@@ -4,5 +4,6 @@ http.client
 nose
 requests
 fastapi
+python-multipart
 uvicorn[standard]==0.17.*
 ###### Requirements with Version Specifiers ######
