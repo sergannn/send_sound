@@ -5,8 +5,8 @@ import asyncio
 import json
 import os
 import time
-os.environ["IMAGEIO_FFMPEG_EXE"] = "/usr/bin/ffmpeg"
-from moviepy.editor import *
+#os.environ["IMAGEIO_FFMPEG_EXE"] = "/usr/bin/ffmpeg"
+#from moviepy.editor import *
 class AuthDetails(BaseModel):
     api_id: int
     api_hash: str
