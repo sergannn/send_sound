@@ -35,7 +35,7 @@ class ClientInfo:
 
 @app.post("/start_auth")
 async def start_auth(api_id: str,api_hash: str, phone: str):
-    phone_code_hash = ""
+    #phone_code_hash = ""
     async with lock:
         try:
             if phone not in clients_dict:
