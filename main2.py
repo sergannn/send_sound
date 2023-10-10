@@ -35,7 +35,7 @@ class ClientInfo:
 
 @app.post("/start_auth")
 async def start_auth(api_id: str,api_hash: str, phone: str):
-    #phone_code_hash = ""
+    phone_code_hash = ""
     async with lock:
         try:
             if phone not in clients_dict:
@@ -49,7 +49,7 @@ async def start_auth(api_id: str,api_hash: str, phone: str):
                 client = client_info.client
                 
             if not await client.is_user_authorized():
-                return {"code_hash":phone_code_hash if phone_code_hash is not None else "",'code':"enter code","message": "Введите код авторизации, и пароль от 2FA (если включена)"}
+                return {"code_hash":phone_code_hash,'code':"enter code","message": "Введите код авторизации, и пароль от 2FA (если включена)"}
             return {"message": "Авторизован","success":"true"}
         except Exception as e:
             raise HTTPException(status_code=5001, detail=str(e))
